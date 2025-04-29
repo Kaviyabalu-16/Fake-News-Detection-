@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detection</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://images.unsplash.com/photo-1600195077073-2c9120fba822') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            max-width: 700px;
+            width: 90%;
+            text-align: center;
+        }
+        .container img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #004080;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            resize: none;
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+            background-color: #006400;
+            color: white;
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #004d00;
+        }
+        .output {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .output h3 {
+            color: #333;
+        }
+        .fake {
+            color: red;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .true {
+            color: seagreen;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://cdn-icons-png.flaticon.com/512/2907/2907264.png" alt="Fake News Detection">
+        
+        <h1>Fake News Detection System</h1>
+        
+        <form action="/" method="POST">
+            <textarea name="txt" placeholder="Enter the news text here..."></textarea>
+            <br>
+            <input type="submit" name="submit" value="Check News">
+        </form>
+
+        <div class="output">
+            <h3>Entered Text:</h3>
+            <p style="color: darkslategray;">{{ request.form['txt'] }}</p>
+
+            <h3>Prediction Result:</h3>
+            {% if result == 0 %}
+                <p class="fake">Fake News</p>
+            {% else %}
+                <p class="true">True News</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
+
+
